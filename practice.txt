@@ -1,0 +1,55 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1) Node.js FS module - synchronous
+
+const fs = require('fs');
+// 1) fs.mkdirSync('sai')    //it creates the directory 'sai' inside 'node' folder
+
+fs.writeFileSync('Bio.txt',"My name is Sairaj and i am from pune");      // it will create the file 'Bio.txt' if it is already exists then it will overwrite the data that we are giving and if the file is not exists then first it will create that file and then add the data
+
+// 2) if we want to append the data to existing file without overwriting the already present data then we will use 'fs.appendFileSync' it will simply append the new data to the already existing data
+
+fs.appendFileSync('Bio.txt',"I am studying in I2IT Pune");
+
+
+// 3) to display the file data without buffer value we need to do encoding first without specifying encodeing it will display buffer data
+
+const data=fs.readFileSync('Bio.txt',"utf8");
+console.log(data);
+
+//4) rename the file : to rename the file we have to specified two arguments first is old path and second argument is newer path
+
+fs.renameSync('Bio.txt','myBio.txt');
+
+
+//5) To delete the file we simply use 'fs.unlinkSync('Path of file that we want to delete')'
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2)  Asynchronous File System
+
+const fs=require('fs');
+
+//Now we will create file asynchronously
+// in asynchronous we have to pass an additional argument i.e callback function 
+fs.writeFile('bio.txt',"Hello my name is sairaj.", (err)=>{
+    console.log("File created successfully....");
+    console.log(err);
+})
+
+// now we will append data
+ fs.appendFile('bio.txt'," I am studying in I2IT Pune", (err)=>{
+    console.log("Data appended successfully...");
+    console.log(err);
+ });
+
+
+// now we will print the data for that we have to passed parameter called encoding to avoid buffer data
+
+fs.readFile('bio.txt',"utf8",(err,data)=>{
+    console.log(data);
+    console.log(err)
+})
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
