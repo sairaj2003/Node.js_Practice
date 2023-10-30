@@ -198,3 +198,25 @@ fs.readFile("json.json",'utf-8',(err,data)=>{
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+9) 'events' module in node.js  creating and emiting event 
+
+//Events Module
+//node.js has in built module called 'Events'
+//we can register ,fire and listen for our own events
+
+const eventEmitter=require('events');
+const event=new eventEmitter;  //here we creted instance of events
+
+// Define an event
+//Creation of Event: This involves defining an event with a specific name, often done using the on method or similar event registration methods. For example:
+event.on("setEvent",(arg)=>{
+    console.log("Hello this is event",arg);
+})
+
+// Emit the event
+//Emitting an Event: This involves triggering the event with a specific name and optional data. 
+event.emit("setEvent","sairaj");
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10) 
