@@ -219,4 +219,57 @@ event.emit("setEvent","sairaj");
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-10) 
+10)  streams and buffer:
+        (a)Normal way : here it reads entire file in one go we are not using buffer in it but this method is not suitable when the size of data is more
+
+        //streams and buffer
+        
+        const fs = require('fs');
+        const http = require('http');
+        
+        const server=http.createServer();
+        server.on("request",(req,res)=>{
+            fs.readFile("bio.txt",(err,data)=>{
+                if(err) return console.log(err);
+                else res.end(data.toString());
+            })
+        })
+        
+        server.listen(8000,'127.0.0.1');
+
+
+
+        (b) Using Streams
+        Streams are a way to handle reading/writing files, network communications, or any kind of end-to-end information exchange in an efficient way. They allow you to process data chunk by chunk, rather than loading           the entire data into memory, which can be especially beneficial for large files.
+        
+
+        //streams and buffer
+
+        const fs = require('fs');
+        const http = require('http');
+        
+        const server=http.createServer();
+        
+        server.on("request",(req,res)=>{
+        
+            const rstream=fs.createReadStream("bio.txt");
+            
+            rstream.on("data",(chunkData)=>{
+                res.write(chunkData)
+            });
+        
+            rstream.on("end",()=>{
+                res.end();
+            })
+            rstream.on("error",(err)=>{
+                console.log(err);
+                res.end("file not found");
+            })
+        })
+        
+        server.listen(8000,'127.0.0.1');
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
