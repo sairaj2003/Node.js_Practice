@@ -145,3 +145,22 @@ server.listen(8000,"127.0.0.1",()=>{
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+7) JSON Data in node.js
+
+const data={
+    name:"sairaj",
+    age:20,
+    address:"pune"
+}
+
+//converting object to the JSON format
+const jsonData=JSON.stringify(data);
+console.log(jsonData);
+//output: {"name":"sairaj","age":20,"address":"pune"}
+
+//again convert JSON data into object data
+const objData=JSON.parse(jsonData);
+console.log(objData);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
