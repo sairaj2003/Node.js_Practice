@@ -163,4 +163,38 @@ const objData=JSON.parse(jsonData);
 console.log(objData);
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8) JSON to object and vice versa 
+
+const fs=require('fs');
+
+const data={
+    name:"sairaj",
+    age:20,
+    address:"pune"
+}
+
+/*
+1.convert to json
+2.add it in the othr file using suitable module i.e fs
+3.readFile
+4.again convert back to object
+5.print on console
+ */
+//1. convrt obj to JSON
+const jsonData=JSON.stringify(data);
+
+//2.add to other fie
+fs.writeFile("json.json",jsonData,(err)=>{
+    console.log("done");
+})
+
+
+//3.read file
+fs.readFile("json.json",'utf-8',(err,data)=>{  
+    console.log(data)
+    const orgData=JSON.parse(data);
+    console.log(orgData);
+})
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
